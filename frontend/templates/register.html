@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản</title>
+    
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <form action="/do-register" method="POST">
+        <h2 style="margin-top: 0; margin-bottom: 20px; color: #1877f2;">Tạo tài khoản mới</h2>
+        
+        <h3>Username</h3>
+        <input type='text' name='nm' placeholder="Chọn tên đăng nhập..." required/>
+        
+        <h3>Password</h3>
+        <input type='password' name='pwd' placeholder="Nhập mật khẩu..." required/>
+
+        <h3>Confirm Password</h3>
+        <input type='password' name='confirm_pwd' placeholder="Nhập lại mật khẩu..." required/>
+        
+        <input type='submit' value='Đăng ký'/>
+
+        <div style="margin-top: 15px; text-align: center;">
+            <span>Đã có tài khoản? </span>
+            <a href="/" style="color: #1877f2; text-decoration: none; font-weight: bold;">
+                Đăng nhập ngay
+            </a>
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,4 +1,3 @@
-from urllib import request
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
@@ -21,3 +20,17 @@ async def login(request: Request, nm: str = Form(...), pwd: str = Form(...)):
         return templates.TemplateResponse(request=request,name="submit.html")
     else:
         return {"status":"Login Failed"}
+
+@app.get("/register")
+async def register (request: Request):
+    return templates.TemplateResponse(request= request, name="register.html")
+
+@app.post("/do-register")
+async def do_register(request: Request, nm: str = Form(...), pwd: str = Form(...), confirm_pwd: str = Form(...)):
+    if login_col.find_one({"name":nm}):
+        return {"status":"Username da ton tai"}
+    elif pwd != confirm_pwd:
+        return {"status":"Password and Confirm Password khong giong nhau"}
+    else:
+        login_col.insert_one({"name":nm, "password": pwd})
+    return templates.TemplateResponse(request=request,name="login.html")
