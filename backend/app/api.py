@@ -3,11 +3,13 @@ from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
 from databases.database import login_col
+from fastapi.staticfiles import StaticFiles
 
 
 app = FastAPI()
-cur_path=Path(__file__).resolve().parent.parent.parent
-templates=Jinja2Templates(directory=cur_path/"frontend/templates")
+root_path=Path(__file__).resolve().parent.parent.parent
+app.mount("/static", StaticFiles(directory=root_path/"frontend/static"), name="static")
+templates=Jinja2Templates(directory=root_path/"frontend/templates")
 
 @app.get("/")
 async def load(request: Request):

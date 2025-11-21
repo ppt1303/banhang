@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng nhập hệ thống</title>
+    
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <form action="/submit" method="POST">
-        <h3>Enter User name</h3>
-        <p><input type='text' name='nm'/></p>
-        <h3>Enter Password</h3>
-        <p><input type='password' name='pwd'/></p>
-        <p><input type='submit' value='Login'/></p>
- </form>
+        <h2 style="margin-top: 0; margin-bottom: 20px; color: #1877f2;">Welcome</h2>
+        
+        <h3>Username</h3>
+        <input type='text' name='nm' placeholder="Nhập tên đăng nhập..." required/>
+        
+        <h3>Password</h3>
+        <input type='password' name='pwd' placeholder="Nhập mật khẩu..." required/>
+        
+        <input type='submit' value='Login'/>
+    </form>
+
 </body>
 </html>
